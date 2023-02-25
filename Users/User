@@ -2,7 +2,8 @@ public class User {
 
     final String name;
     final String passcode;
-    
 
-
+    public User() {
+        
+    }
 }
