@@ -1,0 +1,2 @@
+//This will be the array of all avaliable users 
+static Users[];

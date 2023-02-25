@@ -1,9 +1,40 @@
 public class User {
 
-    final String name;
-    final String passcode;
+    private String name;
+    private String passcode;
+    private String phoneNumber;
+    private String email;
+    private double balance;
 
-    public User() {
+    public User(String name, String, String passcode, String phoneNumber, String email, double balance) {
+        this.name        = name;
+        this.phoneNumber = phoneNumber;
+        this.passcode    = passcode;
+        this.email       = email;
+        this.balance     = balance;
+    }
+
+    public getCurrentBalance() {
+        System.out.println("Hi "+this.name+", your current balance is $"+balance);
+    }
+
+    public void getCurrentInformation() {
+        System.out.println("Here's your current information: ");
+        System.out.println("Name: "+);
+        System.out.println("Email: "+this.email);
+        System.out.println("Phone number: "+this.phoneNumber);
+    }
+
+    public private void updateBalance(double newBalance) {
+        this.balance = newBalance;
+    }
+
+    public void withdraw(double reqBalance) {
+        double remaining;
         
+        if (this.balance < reqBalance) {
+            System.out.println("You've requested a balance that is greater than your current balance of $"+this.balance);
+    
+        }
     }
 }
