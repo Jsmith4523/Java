@@ -1,5 +1,4 @@
-
-static User[] users;
+package Users;
 
 public class User {
 
@@ -10,24 +9,25 @@ public class User {
     private double balance;
     private double pocketCash;
 
-    public User(String name, String, String passcode, String phoneNumber, String email, double balance) {
+    public User(String name, String passcode, String phoneNumber, String email, double balance) {
         this.name        = name;
         this.phoneNumber = phoneNumber;
         this.passcode    = passcode;
         this.email       = email;
         this.balance     = balance;
+        this.pocketCash  = 200.00;
     }
 
     public void getCurrentInformation() {
         System.out.println("Here's your current information: ");
-        System.out.println("Name: "+);
+        System.out.println("Name: "+this.name);
         System.out.println("Email: "+this.email);
         System.out.println("Phone number: "+this.phoneNumber);
     }
 
-    public private void updateBalance() {
+   private void updateBalance() {
         System.out.println("Your NEW balance is $"+this.balance);
-        System.out.println("Your pocket cash is $"+this.pocketCash)
+        System.out.println("Your pocket cash is $"+this.pocketCash);
     }
 
     public void withdraw(double reqBalance) {
