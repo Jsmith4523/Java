@@ -2,12 +2,12 @@ package Users;
 
 public class User {
 
-    private String name;
-    private String passcode;
-    private String phoneNumber;
-    private String email;
-    private double balance;
-    private double pocketCash;
+    public String name;
+    public String passcode;
+    public String phoneNumber;
+    public String email;
+    public double balance;
+    public double pocketCash;
 
     public User(String name, String passcode, String phoneNumber, String email, double balance) {
         this.name        = name;
