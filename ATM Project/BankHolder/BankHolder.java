@@ -1,6 +1,8 @@
 package BankHolder;
 
-public class BankHolder {
+import User.TruistBank;
+
+public class BankHolder extends TruistBank{
     
     public String passcode;
     private String name;
