@@ -1,7 +1,8 @@
 package StudentFile;
 
 import java.util.Scanner;
-import StudentFile.Course.*;
+import StudentFile.Student.*;
+import StudentFile.Course.*;;
 
 public class Main {
 
