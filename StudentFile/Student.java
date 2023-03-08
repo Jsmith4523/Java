@@ -15,9 +15,9 @@ public class Student {
     }
 
     public void printInformation() {
-        System.out.printf("Hello %s!", fullname);
-        System.out.printf("From what we see, you are %d years old", age);
-        System.out.printf("You are taking %d courses", courses.length);
+        System.out.printf("Hello %s!\n", fullname);
+        System.out.printf("From what we see, you are %d years old\n", age);
+        System.out.printf("You are taking %d courses\n\n", courses.length);
 
         for(Course course: this.courses) {
             course.showCourseInformation();

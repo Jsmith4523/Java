@@ -44,7 +44,7 @@ public class Main {
     }
 
     public static Course[] inputCourses() {
-        Course[] courses = {};
+        Course[] courses = new Course[3];
 
         for(int i = 0; i < 3; i++) {
             String title;

@@ -15,6 +15,6 @@ public class Course {
 
     public void showCourseInformation() {
         System.out.printf("Course title: %s\nInstructor: %s\nDays: %s\nDuration: %s\n", this.title, this.instructorName, this.days, this.duration);
-        System.out.println("-----------------------------");
+        System.out.println("-----------------------------\n");
     }
 }
