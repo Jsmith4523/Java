@@ -1,4 +1,4 @@
-package PowerSeries;
+package PowerSeries.Factor;
 
 public class Factor {
     public static int factorial(int num) {
@@ -16,10 +16,10 @@ public class Factor {
     }
 
     public static int power(int x, int pow) {
-        int product  = 0;
+        int product = 1;
 
         for(int i = 1; i <= pow; i++) {
-            product += i*pow;
+            product *= x;
         }
 
         return product;
