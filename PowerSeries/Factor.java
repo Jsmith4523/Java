@@ -15,9 +15,13 @@ public class Factor {
         return factorial;
     }
 
-    public static int findPower(int x, int pow) {
+    public static int power(int x, int pow) {
+        int product  = 0;
 
+        for(int i = 1; i <= pow; i++) {
+            product += i*pow;
+        }
 
-        return 0;
+        return product;
     }
 }
