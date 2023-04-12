@@ -1,9 +1,10 @@
-package PowerSeries.Factor;
+package PowerSeries.Calculate;
 
-public class Factor {
+public class Calculate {
     public static int factorial(int num) {
         int factorial = 1;
 
+        //If the number is greater than 2, then create factorial
         if (num > 2) {
             for(int i = num; i > 0; i--) {
                 factorial *= i;
