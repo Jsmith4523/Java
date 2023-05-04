@@ -50,6 +50,8 @@ public class Student {
         }
 
         if (studentList.contains(studentList.get(id-1))) {
+            Student student = studentList.get(id-1);
+
             System.out.println("That id is taken already!");
             return studentList.get(ID-1).ID + 1;
         }
