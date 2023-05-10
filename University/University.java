@@ -14,6 +14,8 @@ public class University {
         Student student4 = new Student();
         student4.information();
 
+        System.out.println("Testing");
+
         Student[] studentsArr1 = {student1, student2, student3, student4};
     
         Student student5 = new Student(studentsArr1, 18);
