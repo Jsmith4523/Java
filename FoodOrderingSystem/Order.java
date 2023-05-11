@@ -12,6 +12,7 @@ public class Order {
         for(Food food: this.foods) {
             total += food.getPrice();
         }
+        
         return total;
     }
 
