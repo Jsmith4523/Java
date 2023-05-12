@@ -7,7 +7,7 @@ public class Food {
     private int id;
     private String name;
     private Double price;
-    private OrderDetail detail; 
+    public  OrderDetail detail; 
 
     public Food(String name, Double price) {
         this.name  = name;
@@ -20,14 +20,43 @@ public class Food {
     }
     
     public void details() {
-        //TODO: Print details of this object!
+        System.out.printf("Name: %s\n", name);
+        System.out.printf("Price: $%.2f\n", price);
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    }
+
+    public void showDetailsAsOrder() {
+
+        System.out.println("~~~~~~~~~~~~~~~");
+        System.out.println("Quantity: x"+detail.quantity);
+        System.out.printf("Name: %s\n", name);
+        System.out.printf("Price: $%.2f\n", getPrice());
+        System.out.printf("Instructions: %s\n\n", detail.instructions);
     }
 
     public double getPrice() {
-        return price;
+        return this.detail.quantity * price;
     }
 
-    private class OrderDetail {
+    public Boolean nameMatches(String name) {
+        return this.name.equalsIgnoreCase(name);
+    }
+
+    public String name() {
+        return this.name;
+    }
+
+    public int getID() {
+        return this.id;
+    }
+
+    public void setupForOrder() {
+        if (this.detail == null) {
+            this.detail = new OrderDetail();
+        }
+    }
+
+    public class OrderDetail {
         private int quantity;
         private String instructions;
 
@@ -35,23 +64,37 @@ public class Food {
             this.quantity = 1;
         }
 
-        public void specialInstructions() {
-            Scanner input = new Scanner(System.in);
+        public void specialInstructions(Scanner inputScanner) {
+            if (this.instructions.isEmpty()) {
+                Scanner input = inputScanner;
     
-            System.out.println("Enter special instructions for the "+name+":");
-            
-            this.instructions = input.nextLine();
+                System.out.println("Enter special instructions for the "+name+":");
+                
+                this.instructions = input.nextLine();
+            }
         }
 
         public void updateQuantity(Order order, int quantity) {
             Scanner input = new Scanner(System.in);
-            
-            int requestedQuantity;
+            int requestedQuantity = 0;
 
             System.out.println("How many of this item do you want? \n Currently, you have "+quantity+":");
 
-            if (quantity == 0) {
+            try {
+                requestedQuantity = input.nextInt();
+            } catch(Exception e) {
+                System.out.println("That is an invalid quantity!");
+                //Exiting back out...
+                return;
+            }
 
+            if (requestedQuantity < 0) {
+                System.out.println("That is a invalid quantity!");
+            }
+            else if (requestedQuantity == 0) {
+                removeFromOrder(order);
+            } else {
+                
             }
         }
 
@@ -59,5 +102,14 @@ public class Food {
             System.out.println("Removing from order...");
             order.removeFromOrder(id);
         }
+
+        public int getQuantity() {
+            return this.quantity;
+        }
+
+        public void setQuantity(int quantity) {
+            this.quantity = quantity;
+        }
     }
 }
+
