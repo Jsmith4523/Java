@@ -28,9 +28,8 @@ public class Food {
     public void showDetailsAsOrder() {
 
         System.out.println("~~~~~~~~~~~~~~~");
-        System.out.println("Quantity: x"+detail.quantity);
         System.out.printf("Name: %s\n", name);
-        System.out.printf("Price: $%.2f\n", getPrice());
+        System.out.printf("Price: $%.2f x %d\n", price, detail.quantity);
         System.out.printf("Instructions: %s\n\n", detail.instructions);
     }
 
