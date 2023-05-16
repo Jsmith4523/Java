@@ -11,7 +11,7 @@ public class Order {
     private LocalDate orderDate;
     private LocalTime orderTime;
 
-    final UUID id = UUID.randomUUID();
+    private int id;
     private ArrayList<Food> foods = new ArrayList<Food>();
 
     public Double totalAmount() {
@@ -29,7 +29,7 @@ public class Order {
         food.setOrderID(orderLength);
         this.foods.add(orderLength, food);
 
-        System.out.println("****"+food.name()+" has been added****\n");
+        System.out.println("\n****"+food.name()+" has been added****\n");
     }
 
     public Boolean hasNoFood() {
@@ -64,7 +64,7 @@ public class Order {
                 addedFood.detail.setQuantity(addedFood.detail.getQuantity()+1);
                 this.foods.add(addedFood.getID(), food);
 
-                System.out.println("****"+food.name()+" quantity has been updated****\n");
+                System.out.println("\n****"+food.name()+" quantity has been updated****\n");
                 break;
             }
         }
@@ -97,7 +97,7 @@ public class Order {
                     resetOrder();
                     System.out.println("Thank you! Come again!");
                 } else {
-                    throw new Exception("That is an invalid input!");
+                    throw new Exception("That is an invalid input!\n\n");
                 }
             } catch (Exception e) {
                 System.out.println(e.getLocalizedMessage());
@@ -111,12 +111,30 @@ public class Order {
             this.orderDate = LocalDate.now();
             this.orderTime = LocalTime.now();
 
+            this.id += 1;
+
             KitchenPrinter.addOrderToList(this);
 
-            System.out.println("Thank you! Your order number is "+this.id.toString());
+            System.out.println("Thank you! Your order number is "+id);
         } catch (Exception e) {
             System.out.println("We were unable to submit your order. Please try again another time.");
         }
+    }
+
+    public String stringOrderDetails() {
+         String orderDetails = """
+            Order #: %d
+            ---------------------
+            Quantity: %d
+            Total: $%.2f
+
+            FOOD
+            
+            """;
+
+        String orderDetailsFormatted = String.format(orderDetails, id, this.foods.size(), this.totalAmount());
+
+        return orderDetailsFormatted;
     }
 
     private void resetOrder() {

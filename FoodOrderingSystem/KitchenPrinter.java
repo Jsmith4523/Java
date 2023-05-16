@@ -1,6 +1,7 @@
 package FoodOrderingSystem;
 
 import java.io.PrintWriter;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -25,6 +26,7 @@ public class KitchenPrinter {
         fileStream = new FileOutputStream("./FoodOrderingSystem/KitchenOrderList.txt", true);
         outFs = new PrintWriter(fileStream);
 
-        
+        outFs.println(order.stringOrderDetails());
+        outFs.close();
     }
 }
