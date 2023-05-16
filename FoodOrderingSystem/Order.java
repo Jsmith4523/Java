@@ -3,8 +3,13 @@ package FoodOrderingSystem;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Order {
+
+    private LocalDate orderDate;
+    private LocalTime orderTime;
 
     final UUID id = UUID.randomUUID();
     private ArrayList<Food> foods = new ArrayList<Food>();
@@ -87,7 +92,7 @@ public class Order {
                 decision = input.next().charAt(0);
 
                 if (decision == 'Y') {
-                    //TODO: Add to file
+                    submitOrderToPrinter();
                 } else if (decision == 'N') {
                     resetOrder();
                     System.out.println("Thank you! Come again!");
@@ -101,11 +106,20 @@ public class Order {
         }
     }
 
-    private void resetOrder() {
-        foods.clear();
+    private void submitOrderToPrinter() {
+        try  {
+            this.orderDate = LocalDate.now();
+            this.orderTime = LocalTime.now();
+
+            KitchenPrinter.addOrderToList(this);
+
+            System.out.println("Thank you! Your order number is "+this.id.toString());
+        } catch (Exception e) {
+            System.out.println("We were unable to submit your order. Please try again another time.");
+        }
     }
 
-    public void confirm() {
-        //TODO: Add order for order file
+    private void resetOrder() {
+        foods.clear();
     }
 }
