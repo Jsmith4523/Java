@@ -1,6 +1,7 @@
 package FoodOrderingSystem;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.UUID;
 
 public class Order {
@@ -22,6 +23,8 @@ public class Order {
         int orderLength = this.foods.size();
         food.setOrderID(orderLength);
         this.foods.add(orderLength, food);
+
+        System.out.println("****"+food.name()+" has been added****\n");
     }
 
     ///Removes food from list based upon if the entry number if valid or not.
@@ -51,6 +54,8 @@ public class Order {
                 this.foods.remove(addedFood.getID());
                 addedFood.detail.setQuantity(addedFood.detail.getQuantity()+1);
                 this.foods.add(addedFood.getID(), food);
+
+                System.out.println("****"+food.name()+" quantity has been updated****\n");
                 break;
             }
         }
@@ -61,11 +66,37 @@ public class Order {
     }
 
     public void showDetailsOfOrder() {
+        Scanner input = new Scanner(System.in);
+
         for(Food food: foods) {
             food.showDetailsAsOrder();
         }
 
-        System.out.printf("The total of this order is: $%.2f", this.totalAmount());
+        System.out.printf("The total of this order is: $%.2f\n\n", this.totalAmount());
+
+        System.out.println("Would you like to put in this order? Y or N");
+
+        char decision = ' ';
+
+        while(decision != 'Y' && decision != 'N') {
+            try {
+                decision = input.next().charAt(0);
+                if (decision == 'Y') {
+                    //TODO: Add to file
+                } else if (decision == 'N') {
+                    resetOrder();
+                    System.out.println("Thank you! Come again!");
+                } else {
+                    throw new Exception("That is an invalid input!");
+                }
+            } catch (Exception e) {
+                System.out.println(e.getLocalizedMessage());
+            }
+        }
+    }
+
+    private void resetOrder() {
+        foods.clear();
     }
 
     public void confirm() {

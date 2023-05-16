@@ -56,19 +56,25 @@ public class Food {
 
     public class OrderDetail {
         private int quantity;
-        private String instructions;
+        private String instructions = "";
 
         public OrderDetail() {
             this.quantity = 1;
         }
 
-        public void specialInstructions(Scanner inputScanner) {
+        public void specialInstructions() {
             if (this.instructions.isEmpty()) {
-                Scanner input = inputScanner;
+                Scanner input = new Scanner(System.in);
     
                 System.out.println("Enter special instructions for the "+name+":");
-                
-                this.instructions = input.nextLine();
+
+                String instructions = input.nextLine();
+
+                if (instructions.isBlank()) {
+                    this.instructions = "No Instructions";
+                } else {
+                    this.instructions = instructions;
+                }
             }
         }
 

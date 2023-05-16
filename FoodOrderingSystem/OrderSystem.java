@@ -42,7 +42,8 @@ public class OrderSystem {
                 food = menu[foodNum-1];
 
                 food.setupForOrder();
-                //food.detail.specialInstructions(input);
+                food.detail.specialInstructions();
+                
                 order.add(food);
              } catch(Exception e) {
                  System.out.println("Sorry, we don't have that item");
