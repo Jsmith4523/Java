@@ -26,7 +26,6 @@ public class Food {
     }
 
     public void showDetailsAsOrder() {
-
         System.out.println("~~~~~~~~~~~~~~~");
         System.out.printf("Name: %s\n", name);
         System.out.printf("Price: $%.2f x %d\n", price, detail.quantity);
