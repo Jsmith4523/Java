@@ -33,7 +33,12 @@ public class OrderSystem {
 
         for(i = 0; i < 5; i++) {
             int foodNum;
-            System.out.println("What would you like to eat? Please select by meal number:");;
+            System.out.println("What would you like to eat? Please select by meal number:");
+
+            if(!order.hasNoFood()) {
+                System.out.println("If you are done with your order, enter \"Done\"");
+            }
+
             input = new Scanner(System.in);
 
              try {
@@ -43,18 +48,21 @@ public class OrderSystem {
 
                 food.setupForOrder();
                 food.detail.specialInstructions();
-                
+
                 order.add(food);
              } catch(Exception e) {
-                 System.out.println("Sorry, we don't have that item");
+                if (order.hasNoFood()) {
+                    System.out.println("Sorry, we don't have that item");
                 
-                 if (i != 0) {
-                     //Retrying the submission...
-                     i -= 1;
-                 }
+                    if (i != 0) {
+                        //Retrying the submission...
+                        i -= 1;
+                    }
+                } else {
+                    return order;
+                }
              }
         }
-
         return order;
     }
 
