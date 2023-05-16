@@ -33,13 +33,13 @@ public class OrderSystem {
 
         for(i = 0; i < 5; i++) {
             int foodNum;
-            System.out.println("What would you like to eat?");;
+            System.out.println("What would you like to eat? Please select by meal number:");;
             input = new Scanner(System.in);
 
              try {
                 Food food;
                 foodNum = input.nextInt();
-                food = menu[foodNum];
+                food = menu[foodNum-1];
 
                 food.setupForOrder();
                 //food.detail.specialInstructions(input);
