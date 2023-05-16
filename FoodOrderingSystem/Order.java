@@ -27,6 +27,10 @@ public class Order {
         System.out.println("****"+food.name()+" has been added****\n");
     }
 
+    public Boolean hasNoFood() {
+        return foods.isEmpty();
+    }
+
     ///Removes food from list based upon if the entry number if valid or not.
     public void removeFromOrder(int id) {
         if (this.foods.size() == 0) {
@@ -81,6 +85,7 @@ public class Order {
         while(decision != 'Y' && decision != 'N') {
             try {
                 decision = input.next().charAt(0);
+
                 if (decision == 'Y') {
                     //TODO: Add to file
                 } else if (decision == 'N') {
@@ -91,6 +96,7 @@ public class Order {
                 }
             } catch (Exception e) {
                 System.out.println(e.getLocalizedMessage());
+                showDetailsOfOrder();
             }
         }
     }
