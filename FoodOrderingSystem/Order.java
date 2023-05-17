@@ -2,7 +2,6 @@ package FoodOrderingSystem;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.UUID;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -29,7 +28,7 @@ public class Order {
         food.setOrderID(orderLength);
         this.foods.add(orderLength, food);
 
-        System.out.println("\n****"+food.name()+" has been added****\n");
+        System.out.println("\n**** "+food.name()+" has been added ****\n");
     }
 
     public Boolean hasNoFood() {
@@ -64,7 +63,7 @@ public class Order {
                 addedFood.detail.setQuantity(addedFood.detail.getQuantity()+1);
                 this.foods.add(addedFood.getID(), food);
 
-                System.out.println("\n****"+food.name()+" quantity has been updated****\n");
+                System.out.println("\n**** "+food.name()+" quantity has been updated ****\n");
                 break;
             }
         }
@@ -111,28 +110,32 @@ public class Order {
             this.orderDate = LocalDate.now();
             this.orderTime = LocalTime.now();
 
-            this.id += 1;
+            this.id = KitchenPrinter.getNextOrderID();
 
             KitchenPrinter.addOrderToList(this);
 
-            System.out.println("Thank you! Your order number is "+id);
+            System.out.println("Thank you! Your order number is "+id+"\n");
         } catch (Exception e) {
-            System.out.println("We were unable to submit your order. Please try again another time.");
+            System.out.println("We were unable to submit your order. Please try again another time.\n");
         }
     }
 
     public String stringOrderDetails() {
          String orderDetails = """
-            Order #: %d
+            %d
             ---------------------
-            Quantity: %d
+            Total Quantity: %d
             Total: $%.2f
 
-            FOOD
+            FOOD:
             
             """;
 
         String orderDetailsFormatted = String.format(orderDetails, id, this.foods.size(), this.totalAmount());
+
+        for(Food food: foods) {
+            orderDetailsFormatted += food.detail.stringOderDetails();
+        }
 
         return orderDetailsFormatted;
     }

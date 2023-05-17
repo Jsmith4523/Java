@@ -114,6 +114,19 @@ public class Food {
         public void setQuantity(int quantity) {
             this.quantity = quantity;
         }
+
+        public String stringOderDetails() {
+
+            String orderDetailsString = """
+                Name: %s
+                Price: $%.2f x %d
+                Instructions: %s
+                -------------------                 
+                """;
+            String orderDetailsFormatted = String.format(orderDetailsString, name, price, quantity, instructions);
+
+            return orderDetailsFormatted;
+        }
     }
 }
 

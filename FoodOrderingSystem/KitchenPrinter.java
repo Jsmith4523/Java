@@ -1,17 +1,16 @@
 package FoodOrderingSystem;
 
 import java.io.PrintWriter;
-import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
-
 
 //This class is responsible for printing orders to the text file...
 
 public class KitchenPrinter {
 
-    private static FileOutputStream fileStream = null;
-    private static PrintWriter outFs = null;
+    private static String source = "./FoodOrderingSystem/KitchenOrderList.txt";
+    private static String countSource = "./FoodOrderingSystem/OrderListCount.txt";
     
     public Order[] getCurrentOrder() {
 
@@ -23,10 +22,26 @@ public class KitchenPrinter {
     }
 
     static void addOrderToList(Order order) throws Exception {
-        fileStream = new FileOutputStream("./FoodOrderingSystem/KitchenOrderList.txt", true);
-        outFs = new PrintWriter(fileStream);
+        FileOutputStream fileStream = new FileOutputStream(source, true);
+        PrintWriter orderFs = new PrintWriter(fileStream);
 
-        outFs.println(order.stringOrderDetails());
-        outFs.close();
+        orderFs.println(order.stringOrderDetails());
+        orderFs.close();
+    }
+
+    public static int getNextOrderID() throws Exception {
+        char nextOrderID = 1;
+
+        FileInputStream file = new FileInputStream(source);
+        Scanner reader = new Scanner(file);
+
+        try {
+            int previousId = reader.nextInt();
+            nextOrderID += previousId;
+        } catch (Exception e) {
+            //If there is no previous order, do nothing...
+        }
+        
+        return nextOrderID;
     }
 }

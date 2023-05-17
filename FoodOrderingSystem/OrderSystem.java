@@ -1,6 +1,5 @@
 package FoodOrderingSystem;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class OrderSystem {
@@ -28,7 +27,7 @@ public class OrderSystem {
         int i;
         Order order = new Order();
 
-        System.out.println("Weclome to Maryland's Pizza and Subs!\nHere is our menu:\n");
+        System.out.println("\n\nWeclome to Maryland's Pizza and Subs!\nHere is our menu:\n\n");
         presentMenu();
 
         for(i = 0; i < 5; i++) {
